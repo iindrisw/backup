@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Racik Rasa - Pencarian Resep</title>
+  <!-- Font Awesome untuk Ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS Utama -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Container Utama -->
+  <main class="container">
+
+    <!-- ================= 1. HALAMAN BERANDA ================= -->
+    <section id="viewBeranda" class="page-view active">
+      
+      <!-- HERO CARD (BACKGROUND KUNING ATAS) -->
+      <div class="top-hero-card">
+        <!-- Header Title & Logo -->
+        <div class="top-header-row">
+          <h1 class="section-title-top">Cari Berdasarkan Bahan...</h1>
+          <div class="brand-logo-text">Racik<br>Rasa</div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+          <!-- Baris 1: Input Bahan Utama -->
+          <div class="input-row">
+            <div class="input-box flex-grow">
+              <button type="button" class="btn-icon" title="Input Suara">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <input 
+                type="text" 
+                id="inputBahanUtama"
+                placeholder="Masukan Bahan Utama" 
+              />
+            </div>
+          </div>
+
+          <!-- Baris 2: Input Bahan Tambahan & Badge Counter -->
+          <div class="input-row">
+            <div class="input-box flex-grow">
+              <button type="button" class="btn-icon" title="Input Suara">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <input 
+                type="text" 
+                id="inputBahanLainnya"
+                placeholder="Masukan Bahan Tambahan" 
+              />
+            </div>
+            <div class="counter-badge">2 / 5</div>
+          </div>
+        </div>
+
+        <!-- Tombol Racik Resep Sekarang -->
+        <div class="cek-button-wrapper">
+          <button type="button" id="btnYukCek" class="btn-yuk-cek">Racik Resep Sekarang!</button>
+        </div>
+
+        <!-- Section Cari Menu Langsung -->
+        <div class="direct-search-section">
+          <h2 class="sub-title-search">Cari Resep Langsung Yukk!</h2>
+          <div class="search-input-row">
+            <div class="input-box flex-grow">
+              <button type="button" class="btn-icon" title="Input Suara">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <input type="text" placeholder="Cari Nama Resep Langsung (Contoh: Nasi Goreng)" />
+            </div>
+            <button type="button" class="btn-search-submit" title="Cari">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+          
+          <div class="filter-btn-wrapper">
+            <button type="button" id="btnFilter" class="btn-filter-alergen">FILTER</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- POPUP / OVERLAY FILTER -->
+      <div id="filterOverlay" class="filter-overlay hidden">
+        <div class="filter-panel">
+          
+          <div class="filter-header-bar">
+            <div id="activeTagsContainer" class="active-tags-inline"></div>
+            <span id="filterPlaceholderText" class="filter-placeholder-text">FILTER</span>
+            <i class="fa-solid fa-magnifying-glass" id="btnExecuteSearch"></i>
+          </div>
+
+          <div class="filter-category-title">
+            <span class="badge-title">ALERGI</span>
+          </div>
+
+          <div class="filter-chips-grid">
+            <button class="chip-btn" data-tag="KACANG">KACANG</button>
+            <button class="chip-btn" data-tag="SEAFOOD">SEAFOOD</button>
+            <button class="chip-btn" data-tag="TELUR">TELUR</button>
+            <button class="chip-btn" data-tag="PEDAS">PEDAS</button>
+          </div>
+
+          <div class="filter-footer-actions">
+            <button type="button" id="btnCloseFilter" class="btn-apply-filter">TERAPKAN FILTER</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Daftar Kartu Resep Grid (2 Kolom) -->
+      <div id="recipeList" class="recipe-grid">
+        
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="recipe-card-compact">
+          <header class="card-header">
+            <h2>Nasi Goreng Mas Hilal loh ya</h2>
+          </header>
+          <div class="card-body">
+            <div class="card-subheader">
+              <h3>Bahan</h3>
+              <span class="like-count"><i class="fa-solid fa-heart"></i> 25262</span>
+            </div>
+            <ol class="ingredient-num-list">
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+              <li>BAWANG</li>
+            </ol>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Paginasi Merah di Bawah Resep -->
+      <div class="pagination-bottom">
+        <div class="pagination-box">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span class="page-dots">...</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 2. HALAMAN DETAIL RESEP ================= -->
+    <section id="viewDetailResep" class="page-view hidden">
+      <div class="detail-header-bar">
+        <button type="button" id="btnBackFromDetail" class="btn-back" title="Kembali">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2>Detail Resep</h2>
+      </div>
+
+      <div class="detail-card">
+        <h3 class="detail-title">Nasi Goreng Mas Hilal loh ya</h3>
+        
+        <div class="detail-section">
+          <h4>Bahan - Bahan</h4>
+          <ul class="detail-list">
+            <li><i class="fa-solid fa-square-check"></i> <span>KENTANG</span></li>
+            <li><i class="fa-solid fa-square-check"></i> <span>WORTEL</span></li>
+            <li><i class="fa-solid fa-square-check"></i> <span>SLEDRI</span></li>
+          </ul>
+        </div>
+
+        <div class="detail-section" style="margin-top: 14px;">
+          <h4>Bahan - Bahan Tidak Tersedia:</h4>
+          <ul class="detail-list missing">
+            <li><i class="fa-regular fa-square"></i> <span>Ayam</span></li>
+            <li><i class="fa-regular fa-square"></i> <span>Telor</span></li>
+          </ul>
+        </div>
+
+        <div class="detail-actions">
+          <button type="button" id="btnCopyMissing" class="btn-detail-action">
+            <i class="fa-solid fa-copy"></i>
+            <span>Salin Bahan Tak Tersedia</span>
+          </button>
+          <button type="button" id="btnLihatLangkah" class="btn-detail-action primary">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Lihat Langkah Memasak</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. HALAMAN SIGN UP ================= -->
+    <section id="viewSignup" class="page-view hidden">
+      <div class="signup-header">
+        <div class="scan-icon-wrapper">
+          <i class="fa-solid fa-expand scan-frame"></i>
+          <i class="fa-solid fa-user user-center"></i>
+        </div>
+        <h2>SIGN UP</h2>
+      </div>
+
+      <form id="signupForm" class="signup-form" onsubmit="return false;">
+        <div class="form-group">
+          <label for="signupName">NAME</label>
+          <input type="text" id="signupName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail">EMAIL</label>
+          <input type="email" id="signupEmail" required />
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword">PASSWORD</label>
+          <input type="password" id="signupPassword" required />
+        </div>
+
+        <button type="submit" class="btn-signup-submit">DAFTAR</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ================= NAVIGASI BAWAH ================= -->
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <a href="#beranda" id="navBeranda" class="nav-item active" title="Beranda">
+        <i class="fa-solid fa-house"></i>
+      </a>
+      <a href="#bookmark" id="navBookmark" class="nav-item" title="Bookmark">
+        <i class="fa-solid fa-bookmark"></i>
+      </a>
+      <a href="#signup" id="navAccount" class="nav-item" title="Akun">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ================= MODAL PEMBERITAHUAN CUSTOM ================= -->
+  <div id="customModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <i class="fa-solid fa-circle-info"></i>
+        <h3 id="modalTitle">Pemberitahuan</h3>
+      </div>
+      <p id="modalMessage">Pesan pemberitahuan akan tampil di sini.</p>
+      <div class="modal-footer">
+        <button id="modalCloseBtn" class="btn-modal" type="button">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= POPUP OVERLAY RESEP (CARI MENU) ================= -->
+  <div id="modalCariMenu" class="modal-overlay-cari hidden">
+    <div class="modal-card-cari">
+      <div class="modal-header-box">
+        <span>RESEP</span>
+        <button type="button" id="btnCloseCariMenu" class="btn-close-modal" title="Tutup">&times;</button>
+      </div>
+
+      <div class="resep-scroll-container">
+        <!-- Item resep dimuat dinamis -->
+      </div>
+
+      <div class="pagination-modal">
+        <span class="page-num active">1</span>
+        <span class="page-num">2</span>
+        <span class="page-num">3</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
