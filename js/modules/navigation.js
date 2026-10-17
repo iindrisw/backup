@@ -61,7 +61,7 @@ export function initNavigation() {
     btnCopyMissing.addEventListener('click', () => {
       const missingLis = document.querySelectorAll('#viewDetailResep .detail-list.missing li span');
       const text = Array.from(missingLis).map(li => `- ${li.textContent}`).join('\n');
-      navigator.clipboard.writeText(text || 'Tidak ada bahan tak tersedia').then(() => {
+      navigator.clipboarPd.writeText(text || 'Tidak ada bahan tak tersedia').then(() => {
         showCustomModal('Daftar bahan yang tidak tersedia telah disalin!', 'Berhasil Disalin');
       });
     });
